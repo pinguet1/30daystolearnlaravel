@@ -9,10 +9,12 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 
 Route::get('test', function () {
+    $job = \App\Models\Job::first();
 
+    \App\Jobs\TranslateJob::dispatch($job);
+
+    return 'Done';
 });
-
-
 
 Route::view('/', 'home');
 route::view('/contact', 'contact');
